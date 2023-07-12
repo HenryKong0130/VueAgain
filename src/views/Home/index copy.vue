@@ -15,7 +15,6 @@ export default {
     return {
       banners: ["1"],
       count: 0,
-      show:true
     };
   },
   beforeCreate() {

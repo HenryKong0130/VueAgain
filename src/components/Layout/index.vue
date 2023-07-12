@@ -24,7 +24,8 @@ export default {};
   .left,
   .right {
     flex: 0 0 auto;
-    overflow:hidden
+    overflow:hidden;
+    background: red;
   }
   .main{
     flex: 1 1 auto;

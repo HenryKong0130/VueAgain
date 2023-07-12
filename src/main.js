@@ -1,14 +1,17 @@
 //入口文件
 import './Mock/index.js' //执行一遍配置的模拟数据
+
 import Vue from "vue";
 import App from "./App.vue";
-import "./styles/global.less";
-import router from "./router/index.js";
 
+import "./styles/global.less"; //配置的全局样式
+
+import router from "./router/index.js";//路由插件
+
+//扩展一个showMessage的vue实例
 import showMessage from "./utils/showMessage";
 Vue.prototype.$showMessage = showMessage;
 
-import './api/banner'
 
 new Vue({
   router,

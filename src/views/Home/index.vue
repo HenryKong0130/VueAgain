@@ -2,8 +2,15 @@
   <div
     class="home-container"
     ref="container"
-  >
-    <h1>{{ banners.length }}</h1>
+    v-if="banners.length > 0"
+  > 
+<ul>
+  <li v-for="item in banners" :key="item.id">
+    <img :src="item.midImg" alt="">
+    <h2>{{ item.title }}</h2>
+    <h3>{{ item.description }}</h3>
+  </li>
+</ul>
   </div>
 </template>
 
@@ -17,6 +24,7 @@ export default {
   },
   async created() {
     this.banners = await getBanners();
+    console.log(this.banners);
   },
 };
 </script>
