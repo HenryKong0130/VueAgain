@@ -16,12 +16,22 @@ Vue.prototype.$showMessage = showMessage;
 import vLoading from "@/directive/loading.js";
 Vue.directive("loading",vLoading);
 
+import { getBlogTypes,getBlogs } from "./api/blog.js";
+
+
 new Vue({   
   router,
   render: (h) => h(App),
 }).$mount("#app");
 
 
+// getBlogTypes().then(r=>{
+//   console.log('123',r);
+// })
+
+// getBlogs(1,20,3).then(r=>{
+//   console.log('456',r);
+// })
 
 
 

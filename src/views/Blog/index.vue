@@ -1,9 +1,24 @@
 <template>
-  <h1>文章</h1>
+    <Layout>
+      <BlogList />
+      <template #right>
+        <BlogCategory />
+      </template>
+    </Layout>
 </template>
 
 <script>
-export default {};
+import Layout from "@/components/Layout/index.vue";
+import BlogCategory from "./BlogCategory/BlogCategory.vue";
+import BlogList from "./BlogList/BlogList.vue";
+export default {
+  components: {
+    Layout,
+    BlogCategory,
+    BlogList
+  },
+};
 </script>
 
-<style></style>
+<style lang="less" scoped>
+</style>
