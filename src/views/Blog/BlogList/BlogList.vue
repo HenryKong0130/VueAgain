@@ -20,7 +20,7 @@
             }
           }">
             <img
-              :src="item.thumb"
+              v-lazy="item.thumb"
               :alt="item.title"
               :title="item.title"
             />

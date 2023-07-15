@@ -14,7 +14,9 @@ Vue.prototype.$showMessage = showMessage;
 
 //注册一个全局只定义指令,vLoading是它的配置对象
 import vLoading from "@/directive/loading.js";
+import vLazy from "@/directive/lazy.js";
 Vue.directive("loading", vLoading);
+Vue.directive("lazy", vLazy);
 
 //事件总线
 import "./eventBus.js";

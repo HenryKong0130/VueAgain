@@ -48,7 +48,6 @@ export default {
         this.everythingDone = 'True'
         this.$emit("load");
       }, this.duration);
-      console.log("加载完成");
     },
   },
 };
