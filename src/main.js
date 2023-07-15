@@ -14,16 +14,23 @@ Vue.prototype.$showMessage = showMessage;
 
 //注册一个全局只定义指令,vLoading是它的配置对象
 import vLoading from "@/directive/loading.js";
-Vue.directive("loading",vLoading);
+Vue.directive("loading", vLoading);
 
-import { getBlogTypes,getBlogs } from "./api/blog.js";
+//事件总线
+import "./eventBus.js";
 
+import {
+  getBlogTypes,
+  getBlogs,
+  getBlog,
+  postComment,
+  getComments,
+} from "./api/blog.js";
 
-new Vue({   
+new Vue({
   router,
   render: (h) => h(App),
 }).$mount("#app");
-
 
 // getBlogTypes().then(r=>{
 //   console.log('123',r);
@@ -33,8 +40,21 @@ new Vue({
 //   console.log('456',r);
 // })
 
+// getBlog(2).then((r) => {
+//   console.log("getBlog", r);
+// });
 
+// postComment({
+//   nickname: "henry",
+//   content: "你好",
+//   blogId: 2,
+// }).then((r) => {
+//   console.log("postComment", r);
+// });
 
+// getComments(2, 4, 5).then((r) => {
+//   console.log("getComments", r);
+// });
 // import styles from "./styles/message.module.less";
 // const div = document.createElement("div");
 // div.className = styles.message;
