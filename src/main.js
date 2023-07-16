@@ -3,7 +3,7 @@ import "./Mock/index.js"; //执行一遍配置的模拟数据
 
 import Vue from "vue";
 import App from "./App.vue";
-
+import store from "@/store/index.js";
 import "./styles/global.less"; //配置的全局样式
 
 import router from "./router/index.js"; //路由插件
@@ -20,6 +20,7 @@ Vue.directive("lazy", vLazy);
 
 //事件总线
 import "./eventBus.js";
+store.dispatch("setting/fetchSetting");
 
 import {
   getBlogTypes,
@@ -30,10 +31,16 @@ import {
 } from "./api/blog.js";
 
 new Vue({
+  store,
   router,
   render: (h) => h(App),
 }).$mount("#app");
 
+window.store = store
+// import { getSetting } from "./api/setting.js";
+// getSetting().then((resp) => {
+//   console.log(resp);
+// });
 // getBlogTypes().then(r=>{
 //   console.log('123',r);
 // })

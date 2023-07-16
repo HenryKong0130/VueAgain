@@ -33,8 +33,9 @@ import BlogDetail from "./BlogDetail.vue";
 import BlogToc from "./BlogToc.vue";
 import BlogComment from "@/views/Blog/BlogComment/BlogComment.vue";
 import mainScroll from "@/mixins/mainScroll";
+import { titleController } from "@/utils";
 export default {
-  mixins: [fetchData({}),mainScroll("mainContainer")],
+  mixins: [fetchData({}), mainScroll("mainContainer")],
   components: {
     Layout,
     BlogDetail,
@@ -43,7 +44,9 @@ export default {
   },
   methods: {
     async fetchData() {
-      return await getBlog(this.$route.params.id);
+      const resp = await getBlog(this.$route.params.id);
+      titleController.setRouteTitle(resp.title);
+      return resp;
     },
   },
   updated() {

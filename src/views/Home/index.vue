@@ -3,7 +3,7 @@
     class="home-container"
     ref="container"
     @wheel="handleWheel"
-    v-loading="isLoading"
+    v-loading="loading"
   >
     <ul
       class="carousel-container"
@@ -43,29 +43,27 @@
 </template>
 
 <script>
-import { getBanners } from "@/api/banner";
 import CarouselItem from "./Carouselitem.vue";
 import Icon from "@/components/Icon/index.vue";
-import fetchData from "@/mixins/fetchData.js";
+// import { getBanners } from "@/api/banner";
+// import fetchData from "@/mixins/fetchData.js";
+import { mapState } from "vuex";
 export default {
-  mixins: [fetchData([])],
+  // mixins: [fetchData([])],
   components: {
     Icon,
     CarouselItem,
   },
   data() {
     return {
-      // banners: [],
-      // isLoading: true,
       index: 0, //第几个轮播图
       containerHeight: 0, //容器的高度
       switching: false, //是否正在滚动
     };
   },
-  // async created() {
-  //   this.banners = await getBanners();
-  //   this.isLoading = false;
-  // },
+  created() {
+    this.$store.dispatch("banner/fetchBanner");
+  },
   mounted() {
     this.containerHeight = this.$refs.container.clientHeight;
     window.addEventListener("resize", this.handleResize);
@@ -77,11 +75,12 @@ export default {
     marginTop() {
       return -this.index * this.containerHeight + "px";
     },
+    ...mapState("banner", ["loading", "data"]),
   },
   methods: {
-    async fetchData() {
-      return await getBanners();
-    },
+    // async fetchData() {
+    //   return await getBanners();
+    // },
     switchTo(i) {
       this.index = i;
     },
